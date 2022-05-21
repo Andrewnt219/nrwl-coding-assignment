@@ -23,9 +23,9 @@ export class TicketsController {
     return this.ticketsService.tickets();
   }
 
-  @Get()
-  async getTicket(id: number) {
-    const ticket = await this.ticketsService.ticket(id);
+  @Get(':id')
+  async getTicket(@Param() params: { id: string }) {
+    const ticket = await this.ticketsService.ticket(Number(params.id));
     if (ticket) return ticket;
     throw new NotFoundException();
   }
