@@ -42,7 +42,11 @@ export function TicketItem({ ticket }: TicketProps) {
         <option value="">(Unassigned)</option>
 
         {usersQuery.data?.map((user) => (
-          <option key={user.id} value={user.id}>
+          <option
+            key={user.id}
+            value={user.id}
+            selected={user.id === ticket.assigneeId}
+          >
             {user.name}
           </option>
         ))}
