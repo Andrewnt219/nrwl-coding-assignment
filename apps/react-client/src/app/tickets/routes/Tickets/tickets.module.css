@@ -1,2 +1,11 @@
 .tickets {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
