@@ -1,7 +1,7 @@
 import { Ticket } from '@acme/shared-models';
 import { useTicketFilterStore } from 'apps/react-client/src/stores';
 import { useMemo } from 'react';
-import { TicketItem, TicketsFilter } from '../../components';
+import { TicketAdd, TicketItem, TicketsFilter } from '../../components';
 import styles from './tickets.module.css';
 
 export interface TicketsProps {
@@ -23,7 +23,7 @@ export function Tickets(props: TicketsProps) {
   return (
     <div className={styles['tickets']}>
       <h2>Tickets</h2>
-
+      <TicketAdd />
       <TicketsFilter />
       <ul>
         {Array.from(filteredTickets).map((ticket) => (

@@ -10,7 +10,7 @@ export function TicketDetails() {
     return <h1>Fail to fetch ticket</h1>;
   }
 
-  if (!ticketQuery.data || !assignedUserQuery.data) {
+  if (!ticketQuery.data) {
     return <h1>Fetching ticket</h1>;
   }
 
@@ -18,16 +18,14 @@ export function TicketDetails() {
     <section>
       <h1>Ticket details</h1>
 
-      <dl>
-        <dt>Title</dt>
-        <dd>{ticketQuery.data.description}</dd>
-
-        <dt>Complete</dt>
-        <dd>{ticketQuery.data.completed ? 'True' : 'False'}</dd>
-
-        <dt>User</dt>
-        <dd>{assignedUserQuery.data.name}</dd>
-      </dl>
+      <p>Title: {ticketQuery.data.description}</p>
+      <p>Complete: {ticketQuery.data.completed ? 'true' : 'false'}</p>
+      <p>
+        Assigned:{' '}
+        {assignedUserQuery.data
+          ? assignedUserQuery.data.name
+          : '(not assigned)'}
+      </p>
 
       <button onClick={onBackButtonClick}>Back</button>
     </section>

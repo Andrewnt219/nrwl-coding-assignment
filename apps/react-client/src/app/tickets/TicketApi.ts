@@ -26,4 +26,11 @@ export class TicketApi {
   static async markTicketAsIncomplete(ticketId: number): Promise<void> {
     return axios.delete(`/tickets/${ticketId}/complete`);
   }
+
+  static async createTicket(
+    ticket: Pick<Ticket, 'description'>
+  ): Promise<Ticket> {
+    const { data } = await axios.post<Ticket>('/tickets', ticket);
+    return data;
+  }
 }
