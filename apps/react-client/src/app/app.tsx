@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Ticket, User } from '@acme/shared-models';
 
 import styles from './app.module.css';
-import Tickets from './tickets/tickets';
+import { Tickets } from './tickets';
 
 const App = () => {
   const [tickets, setTickets] = useState([] as Ticket[]);
