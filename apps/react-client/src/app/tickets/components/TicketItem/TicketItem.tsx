@@ -6,7 +6,12 @@ export interface TicketProps {
 }
 
 export function TicketItem({ ticket }: TicketProps) {
-  const { markAsCompleteMutation, markAsIncompleteMutation } = useTicketItem();
+  const {
+    markAsCompleteMutation,
+    markAsIncompleteMutation,
+    assignUserMutation,
+    usersQuery,
+  } = useTicketItem();
 
   const isDisabledCompleteButton =
     markAsCompleteMutation.isLoading || markAsIncompleteMutation.isLoading;
@@ -15,9 +20,30 @@ export function TicketItem({ ticket }: TicketProps) {
       ? markAsIncompleteMutation.mutate(ticket.id)
       : markAsCompleteMutation.mutate(ticket.id);
 
+  const onUserSelectChange: React.ChangeEventHandler<HTMLSelectElement> = (
+    ev
+  ) => {
+    const userId = +ev.target.value.trim();
+    if (isNaN(userId)) return;
+    assignUserMutation.mutate({ ticketId: ticket.id, userId });
+  };
+
   return (
     <div>
       Ticket: {ticket.id}, {ticket.description}
+      <select
+        disabled={assignUserMutation.isLoading}
+        title="available users"
+        onChange={onUserSelectChange}
+      >
+        <option value="">(Unassigned)</option>
+
+        {usersQuery.data?.map((user) => (
+          <option key={user.id} value={user.id}>
+            {user.name}
+          </option>
+        ))}
+      </select>
       <button
         disabled={isDisabledCompleteButton}
         onClick={onCompleteButtonClick}

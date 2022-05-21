@@ -12,8 +12,11 @@ export class TicketApi {
     return data;
   }
 
-  static async assignUser(ticketId: number, userId: number): Promise<void> {
-    return axios.put(`/tickets/${ticketId}/assign/${userId}`);
+  static async assignUser(params: {
+    ticketId: number;
+    userId: number;
+  }): Promise<void> {
+    return axios.put(`/tickets/${params.ticketId}/assign/${params.userId}`);
   }
 
   static async markTicketAsComplete(ticketId: number): Promise<void> {
