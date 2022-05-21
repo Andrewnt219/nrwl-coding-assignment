@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { Ticket, User } from '@acme/shared-models';
+import { User } from '@acme/shared-models';
 
 import styles from './app.module.css';
 import { TicketApi, Tickets } from './tickets';
