@@ -1,4 +1,5 @@
 import { Ticket } from '@acme/shared-models';
+import { Link } from 'react-router-dom';
 import { useTicketItem } from './useTicketItem';
 
 export interface TicketProps {
@@ -30,7 +31,9 @@ export function TicketItem({ ticket }: TicketProps) {
 
   return (
     <div>
-      Ticket: {ticket.id}, {ticket.description}
+      <Link to={`/${ticket.id}`}>
+        Ticket: {ticket.id}, {ticket.description}
+      </Link>
       <select
         disabled={assignUserMutation.isLoading}
         title="available users"

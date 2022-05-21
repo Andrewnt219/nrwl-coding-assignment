@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 
 import styles from './app.module.css';
-import { TicketApi, Tickets } from './tickets';
+import { TicketApi, TicketDetails, Tickets } from './tickets';
 import { useQuery } from 'react-query';
 
 const App = () => {
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/" element={<Tickets tickets={ticketQuery.data} />} />
 
         {/* Hint: Try `npx nx g component TicketDetails --no-export` to generate this component  */}
-        <Route path="/:id" element={<h2>Details Not Implemented</h2>} />
+        <Route path="/:id" element={<TicketDetails />} />
       </Routes>
     </div>
   );

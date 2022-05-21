@@ -7,7 +7,7 @@ export class UserApi {
     return data;
   }
 
-  static async getUser(userId: string) {
+  static async getUser(userId: number) {
     const { data } = await axios.get<User>(`/users/${userId}`);
     return data;
   }
