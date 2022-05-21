@@ -25,7 +25,7 @@ export function Tickets(props: TicketsProps) {
       <h2>Tickets</h2>
       <TicketAdd />
       <TicketsFilter />
-      <ul className={styles['tickets']}>
+      <ul aria-label="tickets" className={styles['tickets']}>
         {Array.from(filteredTickets).map((ticket) => (
           <li key={ticket.id}>
             <TicketItem ticket={ticket} />
