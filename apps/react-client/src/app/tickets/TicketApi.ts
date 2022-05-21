@@ -7,20 +7,20 @@ export class TicketApi {
     return data;
   }
 
-  static async getTicket(ticketId: string): Promise<Ticket> {
+  static async getTicket(ticketId: number): Promise<Ticket> {
     const { data } = await axios.get<Ticket>(`/tickets/${ticketId}`);
     return data;
   }
 
-  static async assignUser(ticketId: string, userId: string): Promise<void> {
+  static async assignUser(ticketId: number, userId: number): Promise<void> {
     return axios.put(`/tickets/${ticketId}/assign/${userId}`);
   }
 
-  static async markTicketAsComplete(ticketId: string): Promise<void> {
+  static async markTicketAsComplete(ticketId: number): Promise<void> {
     return axios.put(`/tickets/${ticketId}/complete`);
   }
 
-  static async markTicketAsIncomplete(ticketId: string): Promise<void> {
+  static async markTicketAsIncomplete(ticketId: number): Promise<void> {
     return axios.delete(`/tickets/${ticketId}/complete`);
   }
 }

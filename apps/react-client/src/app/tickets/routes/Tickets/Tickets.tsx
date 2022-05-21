@@ -1,8 +1,9 @@
 import { Ticket } from '@acme/shared-models';
+import { TicketItem } from '../../components';
 import styles from './tickets.module.css';
 
 export interface TicketsProps {
-  tickets: Ticket[];
+  tickets?: Ticket[];
 }
 
 export function Tickets(props: TicketsProps) {
@@ -13,12 +14,12 @@ export function Tickets(props: TicketsProps) {
         <ul>
           {props.tickets.map((t) => (
             <li key={t.id}>
-              Ticket: {t.id}, {t.description}
+              <TicketItem ticket={t} />
             </li>
           ))}
         </ul>
       ) : (
-        <span>...</span>
+        <span>Loading ticket</span>
       )}
     </div>
   );
