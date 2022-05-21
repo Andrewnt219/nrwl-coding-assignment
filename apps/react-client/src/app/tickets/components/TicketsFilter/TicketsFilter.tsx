@@ -40,7 +40,6 @@ export function TicketsFilter() {
       <button type="button" onClick={resetFilter}>
         Reset
       </button>
-      <button type="submit">Filter</button>
     </form>
   );
 }
