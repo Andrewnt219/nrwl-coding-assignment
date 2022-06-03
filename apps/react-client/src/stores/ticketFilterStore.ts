@@ -3,6 +3,7 @@ import create from 'zustand';
 export interface TicketFilter {
   byIncomplete: boolean;
   byComplete: boolean;
+  searchTerm: string;
 }
 
 export interface TicketFilterStore {
@@ -14,6 +15,7 @@ export interface TicketFilterStore {
 const initialFilter: TicketFilter = {
   byComplete: true,
   byIncomplete: true,
+  searchTerm: '',
 };
 export const useTicketFilterStore = create<TicketFilterStore>((set) => ({
   filter: initialFilter,

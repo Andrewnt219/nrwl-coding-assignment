@@ -8,13 +8,23 @@ export function TicketsFilter() {
   const onStatusInputChange: React.ChangeEventHandler<HTMLInputElement> = (
     ev
   ) => {
+    const value =
+      ev.target.type === 'checkbox' ? ev.target.checked : ev.target.value;
     setFilter({
-      [ev.target.name]: ev.target.checked,
+      [ev.target.name]: value,
     });
   };
 
   return (
     <form>
+      <label htmlFor="ticketSearchInput">Search Term</label>
+      <input
+        type="text"
+        id="ticketSearchInput"
+        name="searchTerm"
+        onChange={onStatusInputChange}
+        value={filter.searchTerm}
+      />
       <fieldset>
         <legend>By ticket status</legend>
 
