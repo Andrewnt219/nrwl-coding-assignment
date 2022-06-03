@@ -9,7 +9,7 @@ export const useTicketQuery = (ticketId: string | number | undefined = '') => {
   return useQuery({
     queryFn: () => TicketApi.getTicket(parsedTicketId),
     queryKey: ['tickets', parsedTicketId],
-    enabled: !isNaN(parsedTicketId),
+    // enabled: !isNaN(parsedTicketId),
     initialData: queryClient
       .getQueryData<Ticket[]>('tickets')
       ?.find((ticket) => ticket.id === parsedTicketId),
