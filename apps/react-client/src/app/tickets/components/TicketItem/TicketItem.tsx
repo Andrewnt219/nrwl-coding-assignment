@@ -38,15 +38,12 @@ export function TicketItem({ ticket }: TicketProps) {
         disabled={assignUserMutation.isLoading}
         title="available users"
         onChange={onUserSelectChange}
+        value={ticket.assigneeId ?? ''}
       >
         <option value="">(Unassigned)</option>
 
         {usersQuery.data?.map((user) => (
-          <option
-            key={user.id}
-            value={user.id}
-            selected={user.id === ticket.assigneeId}
-          >
+          <option key={user.id} value={user.id}>
             {user.name}
           </option>
         ))}
